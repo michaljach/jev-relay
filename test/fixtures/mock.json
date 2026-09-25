@@ -1,0 +1,5 @@
+{ "note_0": 0.92, "note_1": 0.08,
+  "route": {"choice":"fast_worker","confidence":0.88},
+  "model": {"choice":"haiku","confidence":0.83},
+  "path": {"choice":"missing_dependency","confidence":0.9},
+  "t_0": 0.95, "t_1": 0.1 }

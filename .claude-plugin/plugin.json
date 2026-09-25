@@ -1,0 +1,7 @@
+{
+  "name": "jev-relay",
+  "version": "0.1.0",
+  "description": "Two-model relay: Jev makes the small decisions the harness prepares (notes, routing, recovery, focused tests); the main model does the work.",
+  "author": { "name": "Michal Jach" },
+  "keywords": ["jev", "typesafe", "routing", "hooks", "decision-layer"]
+}

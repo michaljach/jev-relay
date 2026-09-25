@@ -1,0 +1,14 @@
+{
+  "description": "jev-relay: Jev decision layer for Codex (no PostToolUseFailure event, so failures are detected inside PostToolUse)",
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "node \"$PLUGIN_ROOT/bin/jev-relay.mjs\" prompt --harness codex", "timeout": 10, "statusMessage": "Jev: picking notes and route" }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Bash|shell|exec_command", "hooks": [{ "type": "command", "command": "node \"$PLUGIN_ROOT/bin/jev-relay.mjs\" failure --harness codex", "timeout": 10 }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "node \"$PLUGIN_ROOT/bin/jev-relay.mjs\" stop --harness codex", "timeout": 300, "statusMessage": "Jev: running focused checks" }] }
+    ]
+  }
+}

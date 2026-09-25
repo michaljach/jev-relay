@@ -1,0 +1,17 @@
+{
+  "description": "jev-relay: Jev decision layer for Claude Code",
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/bin/jev-relay.mjs\" prompt --harness claude", "timeout": 10 }] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Agent|Task", "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/bin/jev-relay.mjs\" subagent --harness claude", "timeout": 10 }] }
+    ],
+    "PostToolUseFailure": [
+      { "matcher": "Bash", "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/bin/jev-relay.mjs\" failure --harness claude", "timeout": 10 }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/bin/jev-relay.mjs\" stop --harness claude", "timeout": 300 }] }
+    ]
+  }
+}
